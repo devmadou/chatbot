@@ -1,0 +1,22 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    volumes:
+      # you can adjust the data directory path on your host machine
+      - ${DATA_DIR}:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  api:
+    build: .
+    # The following command will run when the container starts | the server will accept connections from any IP address
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      # host:container
+      - "8000:8000"
+    depends_on:
+      - db
