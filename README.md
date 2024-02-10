@@ -128,3 +128,68 @@ INSTALLED_APPS = [
 ]
 ```
 
+### Replicating the dependencies in our local environment
+
+We'll install pipenv locally and replicate dependencies in our local environment, so we can benefit form code
+completion. This is not mandatory, but if not done, all files may show up errored in our IDE.
+
+For that, we'll use pipenv.
+
+We need to cd into our api app directory.
+
+```bash
+cd api
+```
+
+Then, we install our dependencies. The requirements file will be picked up automatically by pipenv.
+
+```bash
+pipenv install
+```
+
+We may need to lock the version of our dependencies to avoid inconsistencies between environments (local, preprod,
+prod):
+
+```bash
+pipenv lock --keep-outdated
+```
+
+We can now activate our environment:
+
+```bash
+pipenv shell
+```
+
+### Configuring the Chatbot API used
+
+We'll use OpenAI APIs to power our chatbot.
+
+Once you create an account on https://openai.com/blog/openai-api and get some credit, you can install the openai python
+package.
+
+We could also simply add the `openai` package to our `requirements.txt` file and run the installation again:
+
+```text
+Django>=5.0.2
+psycopg2-binary>=2.9.9
+openai>=1.12.0
+```
+
+The api container should reload, but we still install the dependencies locally to benefit from code completion.
+
+```bash
+pipenv install
+```
+
+Create an environment variable to store your API key in `api/.env`.
+
+***DO NOT SHARE THIS KEY WITH ANYONE***
+
+You can skip versioning this file by adding it to your `.gitignore` file.
+
+```dotenv
+OPENAI_API_KEY=your-api-key
+```
+
+- installing python-dotenv
+
