@@ -6,24 +6,30 @@ interface SectionProps {
     children: ReactNode
     imgSrc: string
     imgAlt: string
-    flip?: boolean
+    flipOnResponsive?: boolean
 }
 
-export default function ImageSection({children, imgSrc, imgAlt, flip = false}: SectionProps) {
-    const {classes} = useStyles({flip})
+export default function ImageSection({children, imgSrc, imgAlt, flipOnResponsive = false}: SectionProps) {
+    const {classes} = useStyles({flipOnResponsive})
+
+    // We'll separate our text content and image content into 2 variables, so we can flip them on responsive screens
+
+    // Text content
     const sectionText = (
         <div className={classes.sectionText}>
             {children}
         </div>
     )
 
+    // Image content
     const sectionImageContainer = (
         <div className={classes.sectionImageContainer}>
             <img src={imgSrc} alt={imgAlt}/>
         </div>
     )
 
-    const sectionContent = flip ?
+    // If 'flipOnResponsive' is true, we'll flip the content of the section
+    const sectionContent = flipOnResponsive ?
         <>{sectionImageContainer}{sectionText}</> :
         <>{sectionText}{sectionImageContainer}</>
 
@@ -37,12 +43,12 @@ export default function ImageSection({children, imgSrc, imgAlt, flip = false}: S
 }
 
 const useStyles = tss
-    .withParams<{ flip: boolean }>()
-    .create(({theme, flip}) => ({
+    .withParams<{ flipOnResponsive: boolean }>()
+    .create(({theme, flipOnResponsive}) => ({
         sectionContent: {
             display: 'flex',
             columnGap: fr.spacing("4w"),
-            flexDirection: flip ? 'column-reverse' : 'column',
+            flexDirection: flipOnResponsive ? 'column-reverse' : 'column',
             [theme.breakpoints.up("md")]: {
                 flexDirection: 'row',
                 alignItems: 'center',

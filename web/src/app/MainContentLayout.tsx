@@ -7,14 +7,21 @@ import { ReactNode, useContext } from "react";
 import ViewDisplayContext from "@/context/ViewDisplayContext";
 import { tss } from "tss-react/mui";
 
+const contactEmail = 'mailto:john.doe@dgfip.finances.gouv.fr'
+
 interface MainContentLayoutProps {
     children: ReactNode
 }
 
 export default function MainContentLayout({children}: MainContentLayoutProps) {
+    // Depending on the page, we'll display a different layout configuration
     const {isFullHeight} = useContext(ViewDisplayContext)
     const {classes} = useStyles({isFullHeight})
+
+    // We'll need to know the current path to highlight the active navigation link
     const pathname = usePathname()
+
+    // We define our navigation links
     let navigation = [
         {
             isHome: true,
@@ -50,18 +57,16 @@ export default function MainContentLayout({children}: MainContentLayoutProps) {
                             {
                                 iconId: 'fr-icon-mail-fill',
                                 linkProps: {
-                                    href: 'mailto:john.doe@dgfip.finances.gouv.fr'
+                                    href: contactEmail
                                 },
                                 text: 'Nous contacter'
                             }
                         ]}
                         navigation={navigation}/>
 
+                {/* Main Content */}
                 <div className={classes.main}>
-
-                    {/* Layout Content */}
                     {children}
-
                 </div>
 
             </div>
@@ -74,12 +79,6 @@ export default function MainContentLayout({children}: MainContentLayoutProps) {
 					contentDescription="
                     Un produit de la Direction de la Transformation Numérique
                     "
-                    // termsLinkProps={{
-                    //     href: '#'
-                    // }}
-                    // websiteMapLinkProps={{
-                    //     href: '#'
-                    // }}
 				/>
             }
         </>
@@ -99,6 +98,7 @@ const useStyles = tss
         main: {
             ...(isFullHeight && {
                 flex: 1,
+                overflow: 'hidden',
             }),
         },
     }))

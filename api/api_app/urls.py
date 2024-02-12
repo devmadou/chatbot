@@ -6,5 +6,6 @@ from . import views
 # This configuration should be imported into the main urls configuration in the api folder
 # Routes should always end with a forward slash
 urlpatterns = [
-    path('hello/', views.say_hello),
+    path('csrf-token/', views.get_csrf_token),
+    path('query/', views.query_chatbot),
 ]

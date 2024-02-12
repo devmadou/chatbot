@@ -24,16 +24,9 @@ export default function RootLayout({children}: { children: ReactNode }) {
             <DsfrHead Link={Link}
                       preloadFonts={[
                           // We preload the loaded fonts to avoid a flash of unstyled text
-                          //"Marianne-Light",
-                          //"Marianne-Light_Italic",
                           "Marianne-Regular",
-                          //"Marianne-Regular_Italic",
                           "Marianne-Medium",
-                          //"Marianne-Medium_Italic",
                           "Marianne-Bold",
-                          //"Marianne-Bold_Italic",
-                          //"Spectral-Regular",
-                          //"Spectral-ExtraBold"
                       ]}/>
             <title>Chatbot</title>
         </head>

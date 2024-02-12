@@ -54,6 +54,24 @@ npm install @codegouvfr/react-dsfr
 npm install --save-dev sass
 ```
 
+Let's also use zod for schema validation
+
+```bash
+npm install @hookform/resolvers
+```
+
+### Installing react-hook-form for the chat form
+
+```bash
+npm install react-hook-form
+```
+
+We can also install zod for form validation
+
+```bash
+npm install zod
+```
+
 ## Setting up the backend
 
 ### Containerizing the application

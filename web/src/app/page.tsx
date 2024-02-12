@@ -10,14 +10,19 @@ export default function Home() {
 
     return (
         <main>
+            {/* Hero section */}
             <div className={classes.heroContainer}>
                 <ImageSection imgSrc='/images/hero.jpg' imgAlt="Image de présentation">
+
+                    {/* Hero text content */}
                     <h1>Exploitez<br/>les facultés de l'IA</h1>
                     <p>
                         Avec l'avènement de l'IA, nous entrons dans une nouvelle ère.<br/>
                         Notre chatbot intelligent est prêt à répondre à vos questions avec rapidité et
                         précision. Essayez-le dès maintenant !
                     </p>
+
+                    {/* Featured action button */}
                     <Button linkProps={{
                         href: '/demo',
                     }}>
@@ -26,15 +31,25 @@ export default function Home() {
                 </ImageSection>
             </div>
 
-            <ImageSection imgSrc='/images/app4.jpg' imgAlt="Image de l'application" flip>
+            {/* Features section */}
+            <ImageSection imgSrc='/images/app.jpg' imgAlt="Image de l'application" flipOnResponsive>
+
+                {/* Feature text content */}
                 <h2>Les Technologies Utilisées</h2>
                 <ul className='fr-mb-3w'>
                     <li>
-                        Frontend en React basé sur <a href="https://github.com/codegouvfr/react-dsfr">react-dsfr</a>
+                        Frontend en React basé sur <a href="https://github.com/codegouvfr/react-dsfr"
+                                                      target='_blank'>react-dsfr</a>
                     </li>
-                    <li>Backend en Python basé sur <a href="https://www.djangoproject.com/">Django</a></li>
-                    <li>Plusieurs <a href="https://openai.com/">modèles</a> disponibles</li>
+                    <li>
+                        Backend en Python basé sur <a href="https://www.djangoproject.com/" target='_blank'>Django</a>
+                    </li>
+                    <li>
+                        Plusieurs <a href="https://openai.com/" target='_blank'>modèles</a> disponibles
+                    </li>
                 </ul>
+
+                {/* Feature action button */}
                 <Button priority="secondary"
                         linkProps={{
                             href: '/demo',
