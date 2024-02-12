@@ -22,10 +22,8 @@ def get_csrf_token(request):
 def query_chatbot(request):
     # We will only handle post requests
     if request.method == "POST":
-        # We retrieve the form data
-
         # We first need to parse the request body
-        body = json.loads(request.body.decode('utf-8'))
+        body = json.loads(request.body.decode("utf-8"))
 
         # We can now access our form data
         user_model = body.get("model")
